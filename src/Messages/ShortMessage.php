@@ -1,8 +1,8 @@
 <?php
 
-namespace NotificationChannels\SmsMedia\Message;
+namespace NotificationChannels\SmsMedia\Messages;
 
-use NotificationChannels\SmsMedia\Contracts\Message\ShortMessageContract;
+use NotificationChannels\SmsMedia\Contracts\Messages\ShortMessageContract;
 
 /**
  * Short message class

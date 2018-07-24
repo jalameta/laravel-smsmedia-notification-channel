@@ -1,8 +1,8 @@
 <?php
 
-namespace NotificationChannels\SmsMedia\Message;
+namespace NotificationChannels\SmsMedia\Messages;
 
-use NotificationChannels\SmsMedia\Contracts\Factory\ShortMessageFactoryContract;
+use NotificationChannels\SmsMedia\Contracts\Factories\ShortMessageFactoryContract;
 
 /**
  * SMS Factory
@@ -17,7 +17,7 @@ class ShortMessageFactory implements ShortMessageFactoryContract
      * @param $receivers
      * @param $body
      *
-     * @return \NotificationChannels\SmsMedia\Contracts\Message\ShortMessageContract
+     * @return \NotificationChannels\SmsMedia\Contracts\Messages\ShortMessageContract
      */
     public function create($receivers, $body)
     {

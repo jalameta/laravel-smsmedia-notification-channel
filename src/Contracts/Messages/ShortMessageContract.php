@@ -1,6 +1,6 @@
 <?php
 
-namespace NotificationChannels\SmsMedia\Contracts\Message;
+namespace NotificationChannels\SmsMedia\Contracts\Messages;
 
 /**
  * Short message contract

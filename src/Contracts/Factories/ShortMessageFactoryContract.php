@@ -1,6 +1,6 @@
 <?php
 
-namespace NotificationChannels\SmsMedia\Contracts\Factory;
+namespace NotificationChannels\SmsMedia\Contracts\Factories;
 
 /**
  * SMS Factory Contract
@@ -15,7 +15,7 @@ interface ShortMessageFactoryContract
      * @param $receivers
      * @param $body
      *
-     * @return \NotificationChannels\SmsMedia\Contracts\Message\ShortMessageContract
+     * @return \NotificationChannels\SmsMedia\Contracts\Messages\ShortMessageContract
      */
     public function create($receivers, $body);
 }
