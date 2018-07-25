@@ -3,7 +3,7 @@
 namespace NotificationChannels\SmsMedia\Exceptions;
 
 /**
- * Missing Recipient Exception
+ * Missing Recipient Exception.
  *
  * @author      veelasky <veelasky@gmail.com>
  */
@@ -18,8 +18,9 @@ class MissingRecipientException extends \Exception
      */
     public function __construct($message = null, $code = 0, \Throwable $previous = null)
     {
-        if (empty($message))
+        if (empty($message)) {
             $message = 'The recipient of the sms message is missing.';
+        }
 
         parent::__construct($message, $code, $previous);
     }

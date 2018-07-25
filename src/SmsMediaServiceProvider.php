@@ -4,15 +4,15 @@ namespace NotificationChannels\SmsMedia;
 
 use Illuminate\Support\ServiceProvider;
 use NotificationChannels\SmsMedia\Messages\ShortMessage;
-use NotificationChannels\SmsMedia\Messages\ShortMessageFactory;
 use NotificationChannels\SmsMedia\Services\SmsMediaClient;
-use NotificationChannels\SmsMedia\Messages\ShortMessageCollection;
-use NotificationChannels\SmsMedia\Contracts\Services\SmsMediaClientContract;
 use NotificationChannels\SmsMedia\Services\SmsMediaService;
+use NotificationChannels\SmsMedia\Messages\ShortMessageFactory;
+use NotificationChannels\SmsMedia\Messages\ShortMessageCollection;
 use NotificationChannels\SmsMedia\Messages\ShortMessageCollectionFactory;
+use NotificationChannels\SmsMedia\Contracts\Services\SmsMediaClientContract;
 
 /**
- * Sms Media Service Provider
+ * Sms Media Service Provider.
  *
  * @author      veelasky <veelasky@gmail.com>
  */
@@ -35,28 +35,43 @@ class SmsMediaServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register SMS Media Http Client
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [
+            'sms-media',
+            SmsMediaClientContract::class,
+        ];
+    }
+
+    /**
+     * Register SMS Media Http Client.
      *
      * @return void
      */
     private function registerClient()
     {
-        $this->app->bind(SmsMediaClientContract::class, function() {
+        $this->app->bind(SmsMediaClientContract::class, function () {
             $config = config('services.smsmedia');
 
-            if (empty($config['base_url']))
+            if (empty($config['base_url'])) {
                 throw new \UnexpectedValueException('SMS Media Base Url cannot be null or empty');
+            }
 
-            switch ($config['mode'])
-            {
+            switch ($config['mode']) {
                 case 'auth':
-                    if (empty($config['credentials']['username']) OR empty($config['credentials']['password']))
-                        throw new \UnexpectedValueException("SMS Media username and/or password cannot be null or empty");
-                    $token = base64_encode($config['credentials']['username'])  . ":" . $config['credentials']['password']));
+                    if (empty($config['credentials']['username']) or empty($config['credentials']['password'])) {
+                        throw new \UnexpectedValueException('SMS Media username and/or password cannot be null or empty');
+                    }
+                    $token = base64_encode($config['credentials']['username'].':'.$config['credentials']['password']);
                     break;
                 case 'token':
-                    if (empty($token))
-                        throw new \UnexpectedValueException("SMS Media Token cannot be null or empty");
+                    if (empty($token)) {
+                        throw new \UnexpectedValueException('SMS Media Token cannot be null or empty');
+                    }
                     $token = $config['credentials']['token'];
                     break;
                 default:
@@ -70,7 +85,7 @@ class SmsMediaServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register SMS Media Service
+     * Register SMS Media Service.
      *
      * @return void
      */
@@ -103,18 +118,5 @@ class SmsMediaServiceProvider extends ServiceProvider
                 $afterMany
             );
         });
-    }
-
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return array
-     */
-    public function provides()
-    {
-        return [
-            'sms-media',
-            SmsMediaClientContract::class,
-        ];
     }
 }

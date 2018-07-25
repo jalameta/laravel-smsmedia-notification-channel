@@ -3,7 +3,7 @@
 namespace NotificationChannels\SmsMedia\Contracts\Factories;
 
 /**
- * SMS collection Factory contract
+ * SMS collection Factory contract.
  *
  * @author      veelasky <veelasky@gmail.com>
  */

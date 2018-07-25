@@ -5,7 +5,7 @@ namespace NotificationChannels\SmsMedia\Messages;
 use NotificationChannels\SmsMedia\Contracts\Factories\ShortMessageCollectionFactoryContract;
 
 /**
- * Short Message Collection Factory
+ * Short Message Collection Factory.
  *
  * @author      veelasky <veelasky@gmail.com>
  */

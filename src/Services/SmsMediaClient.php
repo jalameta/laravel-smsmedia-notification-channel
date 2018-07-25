@@ -8,21 +8,21 @@ use NotificationChannels\SmsMedia\Contracts\Services\SmsMediaClientContract;
 use NotificationChannels\SmsMedia\Contracts\Messages\ShortMessageCollectionContract;
 
 /**
- * SMS Media Client
+ * SMS Media Client.
  *
  * @author      veelasky <veelasky@gmail.com>
  */
 class SmsMediaClient implements SmsMediaClientContract
 {
     /**
-     * Http Client
+     * Http Client.
      *
      * @var \GuzzleHttp\Client
      */
     protected $httpClient;
 
     /**
-     * Sender information
+     * Sender information.
      *
      * @var string
      */
@@ -42,7 +42,7 @@ class SmsMediaClient implements SmsMediaClientContract
     }
 
     /**
-     * Send single text message
+     * Send single text message.
      *
      * @param \NotificationChannels\SmsMedia\Contracts\Messages\ShortMessageContract $message
      *
@@ -52,17 +52,17 @@ class SmsMediaClient implements SmsMediaClientContract
     public function sendMessage(ShortMessageContract $message)
     {
         $response = $this->httpClient->request('POST', '/api/sms/1/text/single', [
-            'json' => $this->prepareMessage($message)
+            'json' => $this->prepareMessage($message),
         ]);
 
-        /**
+        /*
          * Todo: abstract this to specific response object;
          */
         return $response;
     }
 
     /**
-     * Send multiple text messages on a collections
+     * Send multiple text messages on a collections.
      *
      * @param \NotificationChannels\SmsMedia\Contracts\Messages\ShortMessageCollectionContract $collection
      *
@@ -72,26 +72,25 @@ class SmsMediaClient implements SmsMediaClientContract
     public function sendMessages(ShortMessageCollectionContract $collection)
     {
         $messages = [];
-        foreach ($collection->items() as $item)
-        {
-            if ($item instanceof ShortMessageContract)
+        foreach ($collection->items() as $item) {
+            if ($item instanceof ShortMessageContract) {
                 $messages[] = $this->prepareMessage($item);
-
+            }
         }
         $response = $this->httpClient->request('POST', '/api/sms/1/text/multi', [
             'json' => [
-                'messages' => $messages
-            ]
+                'messages' => $messages,
+            ],
         ]);
 
-        /**
+        /*
          * Todo: abstract this to specific response object;
          */
         return $response;
     }
 
     /**
-     * Prepare text message data
+     * Prepare text message data.
      *
      * @param \NotificationChannels\SmsMedia\Contracts\Messages\ShortMessageContract $message
      *
@@ -102,12 +101,12 @@ class SmsMediaClient implements SmsMediaClientContract
         return [
             'from' => $this->from,
             'to' => $message->receivers(),
-            'text' => $message->body()
+            'text' => $message->body(),
         ];
     }
 
     /**
-     * Create new Http Client
+     * Create new Http Client.
      *
      * @param $url
      * @param $credentials
@@ -122,9 +121,9 @@ class SmsMediaClient implements SmsMediaClientContract
             'headers' => [
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',
-                'Authorization' => 'Basic ' . $credentials
+                'Authorization' => 'Basic '.$credentials,
             ],
-            'verify' => (parse_url($url)['scheme'] == 'http' OR !$verify) ? false : true
+            'verify' => (parse_url($url)['scheme'] == 'http' or ! $verify) ? false : true,
         ];
 
         return new Client($options);

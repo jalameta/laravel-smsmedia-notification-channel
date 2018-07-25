@@ -9,14 +9,13 @@ namespace NotificationChannels\SmsMedia\Services;
  */
 class SmsMediaResponse
 {
-    private static $statuses = [
-        0 => 'FAILED',
-        1 => 'SUCCESS'
-    ];
-
     protected $messages;
 
     protected $requestId;
 
     protected $status;
+    private static $statuses = [
+        0 => 'FAILED',
+        1 => 'SUCCESS',
+    ];
 }

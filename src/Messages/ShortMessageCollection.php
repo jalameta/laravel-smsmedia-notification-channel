@@ -6,7 +6,7 @@ use NotificationChannels\SmsMedia\Contracts\Messages\ShortMessageContract;
 use NotificationChannels\SmsMedia\Contracts\Messages\ShortMessageCollectionContract;
 
 /**
- * Short Message collection
+ * Short Message collection.
  *
  * @author      veelasky <veelasky@gmail.com>
  */
@@ -30,7 +30,7 @@ class ShortMessageCollection implements ShortMessageCollectionContract
     {
         if ($shortMessage->hasManyReceivers()) {
             throw new \LogicException(
-                "Expected one receiver per short message, got many."
+                'Expected one receiver per short message, got many.'
             );
         }
 
@@ -40,7 +40,7 @@ class ShortMessageCollection implements ShortMessageCollectionContract
     }
 
     /**
-     * Retrieve all items
+     * Retrieve all items.
      *
      * @return array
      */
@@ -66,8 +66,8 @@ class ShortMessageCollection implements ShortMessageCollectionContract
         }
 
         return [
-            'Msisdns'        => implode('|', $receivers),
-            'Messages'       => implode('|', $messages),
+            'Msisdns' => implode('|', $receivers),
+            'Messages' => implode('|', $messages),
         ];
     }
 }

@@ -5,14 +5,14 @@ namespace NotificationChannels\SmsMedia\Events;
 use NotificationChannels\SmsMedia\Contracts\Messages\ShortMessageContract;
 
 /**
- * Message was sent event
+ * Message was sent event.
  *
  * @author      veelasky <veelasky@gmail.com>
  */
 class MessageWasSent
 {
     /**
-     * Sms Instance
+     * Sms Instance.
      *
      * @var \NotificationChannels\SmsMedia\Contracts\Messages\ShortMessageContract
      */

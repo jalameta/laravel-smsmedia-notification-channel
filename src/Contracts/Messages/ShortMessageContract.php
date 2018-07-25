@@ -3,7 +3,7 @@
 namespace NotificationChannels\SmsMedia\Contracts\Messages;
 
 /**
- * Short message contract
+ * Short message contract.
  *
  * @author      veelasky <veelasky@gmail.com>
  */

@@ -5,7 +5,7 @@ namespace NotificationChannels\SmsMedia\Messages;
 use NotificationChannels\SmsMedia\Contracts\Messages\ShortMessageContract;
 
 /**
- * Short message class
+ * Short message class.
  *
  * @author      veelasky <veelasky@gmail.com>
  */
@@ -88,8 +88,8 @@ class ShortMessage implements ShortMessageContract
     public function toArray()
     {
         return array_filter([
-            'Msisdns'        => $this->receiversString('|'),
-            'Messages'       => $this->body(),
+            'Msisdns' => $this->receiversString('|'),
+            'Messages' => $this->body(),
         ]);
     }
 }

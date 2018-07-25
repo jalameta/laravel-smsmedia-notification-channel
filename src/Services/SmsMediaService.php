@@ -9,7 +9,7 @@ use NotificationChannels\SmsMedia\Contracts\Messages\ShortMessageCollectionContr
 use NotificationChannels\SmsMedia\Contracts\Factories\ShortMessageCollectionFactoryContract;
 
 /**
- * SMS Media Service
+ * SMS Media Service.
  *
  * @author      veelasky <veelasky@gmail.com>
  */
@@ -94,7 +94,7 @@ class SmsMediaService
     }
 
     /**
-     * Send SMS
+     * Send SMS.
      *
      * @param      $receivers
      * @param null $body
@@ -104,22 +104,25 @@ class SmsMediaService
      */
     public function sendShortMessage($receivers, $body = null)
     {
-        if (! $receivers instanceof ShortMessageContract)
+        if (! $receivers instanceof ShortMessageContract) {
             $receivers = $this->factory->create($receivers, $body);
+        }
 
-        if (is_callable($this->beforeSingleShortMessageCallback))
+        if (is_callable($this->beforeSingleShortMessageCallback)) {
             call_user_func_array($this->beforeSingleShortMessageCallback, [$receivers]);
+        }
 
         $response = $this->client->sendMessage($receivers);
 
-        if (is_callable($this->afterSingleShortMessageCallback))
+        if (is_callable($this->afterSingleShortMessageCallback)) {
             call_user_func_array($this->afterSingleShortMessageCallback, [$response, $receivers]);
+        }
 
         return $response;
     }
 
     /**
-     * Send Multiple SMS
+     * Send Multiple SMS.
      *
      * @param $messages
      *
@@ -141,13 +144,15 @@ class SmsMediaService
             $messages = $collection;
         }
 
-        if (is_callable($this->beforeMultipleShortMessageCallback))
+        if (is_callable($this->beforeMultipleShortMessageCallback)) {
             call_user_func_array($this->beforeMultipleShortMessageCallback, [$messages]);
+        }
 
         $response = $this->client->sendMessages($messages);
 
-        if (is_callable($this->afterMultipleShortMessageCallback))
+        if (is_callable($this->afterMultipleShortMessageCallback)) {
             call_user_func_array($this->afterMultipleShortMessageCallback, [$response, $messages]);
+        }
 
         return $response;
     }

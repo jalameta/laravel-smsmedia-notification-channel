@@ -5,14 +5,14 @@ namespace NotificationChannels\SmsMedia\Messages;
 use NotificationChannels\SmsMedia\Contracts\Factories\ShortMessageFactoryContract;
 
 /**
- * SMS Factory
+ * SMS Factory.
  *
  * @author      veelasky <veelasky@gmail.com>
  */
 class ShortMessageFactory implements ShortMessageFactoryContract
 {
     /**
-     * Create new short message instance
+     * Create new short message instance.
      *
      * @param $receivers
      * @param $body
