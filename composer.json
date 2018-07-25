@@ -1,5 +1,5 @@
 {
-    "name": "laravel-notification-channels/sms-media",
+    "name": "globalcipta/laravel-sms-media-channel",
     "description": "Sends SMS using SMS Media API",
     "homepage": "https://globalcipta.co.id/",
     "license": "MIT",
