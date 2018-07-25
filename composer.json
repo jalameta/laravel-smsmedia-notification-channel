@@ -27,6 +27,16 @@
         "NotificationChannels\\SmsMedia\\": "src"
       }
     },
+    "extras": {
+      "branch-alias": {
+        "dev-master": "1.0-dev"
+      },
+      "laravel" : {
+        "providers" : [
+          "NotificationChannels\\SmsMedia\\SmsMediaServiceProvider"
+        ]
+      }
+    },
     "config": {
       "sort-packages": true
     }
