@@ -27,7 +27,7 @@
         "NotificationChannels\\SmsMedia\\": "src"
       }
     },
-    "extras": {
+    "extra": {
       "branch-alias": {
         "dev-master": "1.0-dev"
       },
