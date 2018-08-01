@@ -102,7 +102,7 @@ class SmsMediaService
      * @return mixed|\Psr\Http\Message\ResponseInterface
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function sendShortMessage($receivers, $body = null)
+    public function sendMessage($receivers, $body = null)
     {
         if (! $receivers instanceof ShortMessageContract) {
             $receivers = $this->factory->create($receivers, $body);
@@ -129,7 +129,7 @@ class SmsMediaService
      * @return mixed|\Psr\Http\Message\ResponseInterface
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function sendShortMessages($messages)
+    public function sendMessages($messages)
     {
         if (! $messages instanceof ShortMessageCollectionContract) {
             $collection = $this->collectionFactory->create();

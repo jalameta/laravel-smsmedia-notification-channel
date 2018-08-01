@@ -38,6 +38,7 @@ class SmsMediaClient implements SmsMediaClientContract
      */
     public function __construct($url, $from, $credentials, $verify = true)
     {
+        $this->from = $from;
         $this->httpClient = $this->createHttpClient($url, $credentials, $verify);
     }
 
