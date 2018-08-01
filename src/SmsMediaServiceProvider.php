@@ -61,18 +61,18 @@ class SmsMediaServiceProvider extends ServiceProvider
                 throw new \UnexpectedValueException('SMS Media Base Url cannot be null or empty');
             }
 
+            $token = $config['credentials']['token'];
+        
             switch ($config['mode']) {
                 case 'auth':
-                    if (empty($config['credentials']['username']) or empty($config['credentials']['password'])) {
+                    if (empty($config['credentials']['username']) or empty($config['credentials']['password']))
                         throw new \UnexpectedValueException('SMS Media username and/or password cannot be null or empty');
-                    }
+                
                     $token = base64_encode($config['credentials']['username'].':'.$config['credentials']['password']);
                     break;
                 case 'token':
-                    if (empty($token)) {
+                    if (empty($token))
                         throw new \UnexpectedValueException('SMS Media Token cannot be null or empty');
-                    }
-                    $token = $config['credentials']['token'];
                     break;
                 default:
                     throw new \UnexpectedValueException('Invalid SMS Media configuration value');
