@@ -20,6 +20,7 @@ class NotificationChannel
      * @param \Illuminate\Notifications\Notification $notification
      *
      * @throws \NotificationChannels\SmsMedia\Exceptions\MissingRecipientException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function send($notifiable, Notification $notification)
     {

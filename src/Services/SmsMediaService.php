@@ -16,7 +16,7 @@ use NotificationChannels\SmsMedia\Contracts\Factories\ShortMessageCollectionFact
 class SmsMediaService
 {
     /**
-     * The jet sms client implementation.
+     * The sms media client implementation.
      *
      * @var \NotificationChannels\SmsMedia\Contracts\Services\SmsMediaClientContract
      */
